@@ -1,6 +1,6 @@
 # Exercise instructions
 
-https://www.notion.so/joinhyphen/Full-stack-engineer-exercise-5ccde379536d47e98fd6cfea63b39ef8
+https://www.notion.so/joinhyphen/Backend-engineer-exercise-f3959f15be6e492b921e5467497564ce
 
 ---
 
