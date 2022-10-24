@@ -8,7 +8,8 @@ INSERT INTO
     answer_type,
     difficulty,
     input_label,
-    input_options
+    input_options,
+    tags
   )
 VALUES
   (
@@ -17,7 +18,8 @@ VALUES
     'text',
     0.3,
     'What nut is used to make marzipan?',
-    '["Almond", "Cashew", "Hazelnut", "Pecan"]'
+    '["Almond", "Cashew", "Hazelnut", "Pecan"]',
+    '["fruit", "food", "nut"]'
   );
 
 INSERT INTO
@@ -27,7 +29,8 @@ INSERT INTO
     answer_type,
     difficulty,
     input_label,
-    input_options
+    input_options,
+    tags
   )
 VALUES
   (
@@ -36,7 +39,8 @@ VALUES
     'text',
     0.3,
     'What is the capital of Australia?',
-    NULL
+    NULL,
+    '["geography", "australia", "capitals"]'
   );
 
 INSERT INTO
@@ -46,7 +50,8 @@ INSERT INTO
     answer_type,
     difficulty,
     input_label,
-    input_options
+    input_options,
+    tags
   )
 VALUES
   (
@@ -55,7 +60,8 @@ VALUES
     'number',
     0.3,
     'What is 6 * 7?',
-    NULL
+    NULL,
+    '["maths", "multiplication"]'
   );
 
 INSERT INTO
@@ -65,7 +71,8 @@ INSERT INTO
     answer_type,
     difficulty,
     input_label,
-    input_options
+    input_options,
+    tags
   )
 VALUES
   (
@@ -74,7 +81,8 @@ VALUES
     'text',
     0.3,
     'Which cheese comes from the Netherlands?',
-    '["Cheddar", "Emmental", "Gouda", "Mozzarella"]'
+    '["Cheddar", "Emmental", "Gouda", "Mozzarella"]',
+    '["food", "cheese", "geography", "netherlands"]'
   );
 
 INSERT INTO
@@ -84,7 +92,8 @@ INSERT INTO
     answer_type,
     difficulty,
     input_label,
-    input_options
+    input_options,
+    tags
   )
 VALUES
   (
@@ -93,7 +102,8 @@ VALUES
     'number',
     0.3,
     'What is 500 / 4?',
-    NULL
+    NULL,
+    '["maths", "division"]'
   );
 
 INSERT INTO
@@ -103,7 +113,8 @@ INSERT INTO
     answer_type,
     difficulty,
     input_label,
-    input_options
+    input_options,
+    tags
   )
 VALUES
   (
@@ -112,7 +123,8 @@ VALUES
     'text',
     0.3,
     'What element does ''O'' represent on the periodic table?',
-    NULL
+    NULL,
+    '["science", "chemistry"]'
   );
 
 INSERT INTO
@@ -122,7 +134,8 @@ INSERT INTO
     answer_type,
     difficulty,
     input_label,
-    input_options
+    input_options,
+    tags
   )
 VALUES
   (
@@ -131,7 +144,8 @@ VALUES
     'number',
     0.3,
     'In meters, how long is an Olympic swimming pool?',
-    NULL
+    NULL,
+    '["sports", "distance"]'
   );
 
 INSERT INTO
@@ -141,7 +155,8 @@ INSERT INTO
     answer_type,
     difficulty,
     input_label,
-    input_options
+    input_options,
+    tags
   )
 VALUES
   (
@@ -150,7 +165,8 @@ VALUES
     'text',
     0.3,
     'Which English town has football teams called United and Wednesday?',
-    NULL
+    NULL,
+    '["sports", "football", "geography", "sheffield"]'
   );
 
 INSERT INTO
@@ -160,7 +176,8 @@ INSERT INTO
     answer_type,
     difficulty,
     input_label,
-    input_options
+    input_options,
+    tags
   )
 VALUES
   (
@@ -169,7 +186,8 @@ VALUES
     'text',
     0.3,
     'What is the highest mountain in the world?',
-    '["Everest", "K2", "Mount Fuji", "Mount Kilimanjaro"]'
+    '["Everest", "K2", "Mount Fuji", "Mount Kilimanjaro"]',
+    '["geography", "mountains"]'
   );
 
 INSERT INTO
@@ -179,7 +197,8 @@ INSERT INTO
     answer_type,
     difficulty,
     input_label,
-    input_options
+    input_options,
+    tags
   )
 VALUES
   (
@@ -188,7 +207,8 @@ VALUES
     'text',
     0.3,
     'What is the capital of Spain?',
-    NULL
+    NULL,
+    '["geography", "spain", "capitals"]'
   );
 
 INSERT INTO
@@ -198,7 +218,8 @@ INSERT INTO
     answer_type,
     difficulty,
     input_label,
-    input_options
+    input_options,
+    tags
   )
 VALUES
   (
@@ -207,7 +228,8 @@ VALUES
     'number',
     1,
     'How many breeds of elephant are there??',
-    NULL
+    NULL,
+    '["animals", "elephant"]'
   );
 
 INSERT INTO
@@ -217,7 +239,8 @@ INSERT INTO
     answer_type,
     difficulty,
     input_label,
-    input_options
+    input_options,
+    tags
   )
 VALUES
   (
@@ -226,7 +249,8 @@ VALUES
     'text',
     1,
     'What is shortest play by Shakespeare?',
-    '["Hamlet", "King Lear", "Macbeth", "The Comedy of Errors"]'
+    '["Hamlet", "King Lear", "Macbeth", "The Comedy of Errors"]',
+    '["literature", "theatre", "shakespeare"]'
   );
 
 INSERT INTO
@@ -236,7 +260,8 @@ INSERT INTO
     answer_type,
     difficulty,
     input_label,
-    input_options
+    input_options,
+    tags
   )
 VALUES
   (
@@ -245,7 +270,8 @@ VALUES
     'text',
     1,
     'What is the capital city of Tanzania?',
-    NULL
+    NULL,
+    '["geography", "tanzania", "capitals"]'
   );
 
 INSERT INTO
@@ -255,7 +281,8 @@ INSERT INTO
     answer_type,
     difficulty,
     input_label,
-    input_options
+    input_options,
+    tags
   )
 VALUES
   (
@@ -264,7 +291,8 @@ VALUES
     'number',
     1,
     'How many time zones are there in Russia?',
-    NULL
+    NULL,
+    '["geography", "russia", "timezones"]'
   );
 
 INSERT INTO
@@ -274,7 +302,8 @@ INSERT INTO
     answer_type,
     difficulty,
     input_label,
-    input_options
+    input_options,
+    tags
   )
 VALUES
   (
@@ -283,7 +312,8 @@ VALUES
     'number',
     1,
     'What year did Vincent Van Gogh die?',
-    NULL
+    NULL,
+    '["art", "history"]'
   );
 
 INSERT INTO

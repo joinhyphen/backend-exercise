@@ -24,3 +24,15 @@ select_permissions:
       filter:
         user_id:
           _eq: X-Hasura-User-Id
+event_triggers:
+  - name: quizzes_update_completed_at
+    definition:
+      enable_manual: false
+      update:
+        columns:
+          - completed_at
+    retry_conf:
+      interval_sec: 10
+      num_retries: 2
+      timeout_sec: 60
+    webhook: http://host.docker.internal:3000/api/actions/quizzes_update_completed_at

@@ -30,6 +30,7 @@ CREATE TABLE "public"."questions" (
   "answer_value" text NOT NULL,
   "answer_type" text NOT NULL,
   "difficulty" Numeric NOT NULL default 0.5,
+  "tags" jsonb,
   PRIMARY KEY ("id"),
   UNIQUE ("id")
 );
@@ -44,6 +45,8 @@ CREATE TABLE "public"."quizzes" (
   "user_id" text NOT NULL,
   "started_at" timestamptz null default now(),
   "completed_at" timestamptz null,
+  "total_difficulty" numeric NULL,
+  "thumbnail" text NULL,
   PRIMARY KEY ("id"),
   UNIQUE ("id")
 );
