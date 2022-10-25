@@ -4,7 +4,7 @@ import { HasuraEventPayload } from '../../sdk/helpers'
 
 export type QuizzesUpdateCompletedAtEvent = Omit<NextApiRequest, 'body'> & {
   body: HasuraEventPayload<
-    Pick<Quizzes, 'id' | 'user_id' | 'started_at' | 'completed_at'>
+    Omit<Quizzes, 'user' | 'questions' | 'questions_aggregate' | '__typename'>
   >
 }
 
@@ -13,7 +13,7 @@ export const quizzes_update_completed_at = async (
   res: NextApiResponse
 ) => {
   try {
-    const updatedQuizzesRecord = req.body.event.data.new
+    const updatedQuizzesRow = req.body.event.data.new
 
     // Task 2
     // ...
