@@ -437,12 +437,14 @@ export type Mutation_RootUpdate_Questions_ManyArgs = {
 
 /** mutation root */
 export type Mutation_RootUpdate_QuizzesArgs = {
+  _inc?: InputMaybe<Quizzes_Inc_Input>
   _set?: InputMaybe<Quizzes_Set_Input>
   where: Quizzes_Bool_Exp
 }
 
 /** mutation root */
 export type Mutation_RootUpdate_Quizzes_By_PkArgs = {
+  _inc?: InputMaybe<Quizzes_Inc_Input>
   _set?: InputMaybe<Quizzes_Set_Input>
   pk_columns: Quizzes_Pk_Columns_Input
 }
@@ -713,6 +715,7 @@ export type Questions = {
   quizzes: Array<Quizzes_Questions>
   /** An aggregate relationship */
   quizzes_aggregate: Quizzes_Questions_Aggregate
+  tags?: Maybe<Scalars['jsonb']>
 }
 
 /** columns and relationships of "questions" */
@@ -736,6 +739,11 @@ export type QuestionsQuizzes_AggregateArgs = {
   offset?: InputMaybe<Scalars['Int']>
   order_by?: InputMaybe<Array<Quizzes_Questions_Order_By>>
   where?: InputMaybe<Quizzes_Questions_Bool_Exp>
+}
+
+/** columns and relationships of "questions" */
+export type QuestionsTagsArgs = {
+  path?: InputMaybe<Scalars['String']>
 }
 
 /** aggregated selection of "questions" */
@@ -916,6 +924,7 @@ export type Questions_Answer_Type_Updates = {
 /** append existing jsonb value of filtered columns with new jsonb value */
 export type Questions_Append_Input = {
   input_options?: InputMaybe<Scalars['jsonb']>
+  tags?: InputMaybe<Scalars['jsonb']>
 }
 
 /** aggregate avg on columns */
@@ -936,6 +945,7 @@ export type Questions_Bool_Exp = {
   input_label?: InputMaybe<String_Comparison_Exp>
   input_options?: InputMaybe<Jsonb_Comparison_Exp>
   quizzes?: InputMaybe<Quizzes_Questions_Bool_Exp>
+  tags?: InputMaybe<Jsonb_Comparison_Exp>
 }
 
 /** unique or primary key constraints on table "questions" */
@@ -947,16 +957,19 @@ export enum Questions_Constraint {
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
 export type Questions_Delete_At_Path_Input = {
   input_options?: InputMaybe<Array<Scalars['String']>>
+  tags?: InputMaybe<Array<Scalars['String']>>
 }
 
 /** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
 export type Questions_Delete_Elem_Input = {
   input_options?: InputMaybe<Scalars['Int']>
+  tags?: InputMaybe<Scalars['Int']>
 }
 
 /** delete key/value pair or string element. key/value pairs are matched based on their key value */
 export type Questions_Delete_Key_Input = {
   input_options?: InputMaybe<Scalars['String']>
+  tags?: InputMaybe<Scalars['String']>
 }
 
 /** input type for incrementing numeric columns in table "questions" */
@@ -973,6 +986,7 @@ export type Questions_Insert_Input = {
   input_label?: InputMaybe<Scalars['String']>
   input_options?: InputMaybe<Scalars['jsonb']>
   quizzes?: InputMaybe<Quizzes_Questions_Arr_Rel_Insert_Input>
+  tags?: InputMaybe<Scalars['jsonb']>
 }
 
 /** aggregate max on columns */
@@ -1025,6 +1039,7 @@ export type Questions_Order_By = {
   input_label?: InputMaybe<Order_By>
   input_options?: InputMaybe<Order_By>
   quizzes_aggregate?: InputMaybe<Quizzes_Questions_Aggregate_Order_By>
+  tags?: InputMaybe<Order_By>
 }
 
 /** primary key columns input for table: questions */
@@ -1035,6 +1050,7 @@ export type Questions_Pk_Columns_Input = {
 /** prepend existing jsonb value of filtered columns with new jsonb value */
 export type Questions_Prepend_Input = {
   input_options?: InputMaybe<Scalars['jsonb']>
+  tags?: InputMaybe<Scalars['jsonb']>
 }
 
 /** select columns of table "questions" */
@@ -1050,7 +1066,9 @@ export enum Questions_Select_Column {
   /** column name */
   InputLabel = 'input_label',
   /** column name */
-  InputOptions = 'input_options'
+  InputOptions = 'input_options',
+  /** column name */
+  Tags = 'tags'
 }
 
 /** input type for updating data in table "questions" */
@@ -1061,6 +1079,7 @@ export type Questions_Set_Input = {
   id?: InputMaybe<Scalars['String']>
   input_label?: InputMaybe<Scalars['String']>
   input_options?: InputMaybe<Scalars['jsonb']>
+  tags?: InputMaybe<Scalars['jsonb']>
 }
 
 /** aggregate stddev on columns */
@@ -1097,6 +1116,7 @@ export type Questions_Stream_Cursor_Value_Input = {
   id?: InputMaybe<Scalars['String']>
   input_label?: InputMaybe<Scalars['String']>
   input_options?: InputMaybe<Scalars['jsonb']>
+  tags?: InputMaybe<Scalars['jsonb']>
 }
 
 /** aggregate sum on columns */
@@ -1118,7 +1138,9 @@ export enum Questions_Update_Column {
   /** column name */
   InputLabel = 'input_label',
   /** column name */
-  InputOptions = 'input_options'
+  InputOptions = 'input_options',
+  /** column name */
+  Tags = 'tags'
 }
 
 export type Questions_Updates = {
@@ -1167,6 +1189,8 @@ export type Quizzes = {
   /** An aggregate relationship */
   questions_aggregate: Quizzes_Questions_Aggregate
   started_at?: Maybe<Scalars['timestamptz']>
+  thumbnail?: Maybe<Scalars['String']>
+  total_difficulty?: Maybe<Scalars['numeric']>
   /** An object relationship */
   user: Users
   user_id: Scalars['String']
@@ -1200,9 +1224,17 @@ export type Quizzes_Aggregate = {
 /** aggregate fields of "quizzes" */
 export type Quizzes_Aggregate_Fields = {
   __typename?: 'quizzes_aggregate_fields'
+  avg?: Maybe<Quizzes_Avg_Fields>
   count: Scalars['Int']
   max?: Maybe<Quizzes_Max_Fields>
   min?: Maybe<Quizzes_Min_Fields>
+  stddev?: Maybe<Quizzes_Stddev_Fields>
+  stddev_pop?: Maybe<Quizzes_Stddev_Pop_Fields>
+  stddev_samp?: Maybe<Quizzes_Stddev_Samp_Fields>
+  sum?: Maybe<Quizzes_Sum_Fields>
+  var_pop?: Maybe<Quizzes_Var_Pop_Fields>
+  var_samp?: Maybe<Quizzes_Var_Samp_Fields>
+  variance?: Maybe<Quizzes_Variance_Fields>
 }
 
 /** aggregate fields of "quizzes" */
@@ -1213,9 +1245,17 @@ export type Quizzes_Aggregate_FieldsCountArgs = {
 
 /** order by aggregate values of table "quizzes" */
 export type Quizzes_Aggregate_Order_By = {
+  avg?: InputMaybe<Quizzes_Avg_Order_By>
   count?: InputMaybe<Order_By>
   max?: InputMaybe<Quizzes_Max_Order_By>
   min?: InputMaybe<Quizzes_Min_Order_By>
+  stddev?: InputMaybe<Quizzes_Stddev_Order_By>
+  stddev_pop?: InputMaybe<Quizzes_Stddev_Pop_Order_By>
+  stddev_samp?: InputMaybe<Quizzes_Stddev_Samp_Order_By>
+  sum?: InputMaybe<Quizzes_Sum_Order_By>
+  var_pop?: InputMaybe<Quizzes_Var_Pop_Order_By>
+  var_samp?: InputMaybe<Quizzes_Var_Samp_Order_By>
+  variance?: InputMaybe<Quizzes_Variance_Order_By>
 }
 
 /** input type for inserting array relation for remote table "quizzes" */
@@ -1223,6 +1263,17 @@ export type Quizzes_Arr_Rel_Insert_Input = {
   data: Array<Quizzes_Insert_Input>
   /** upsert condition */
   on_conflict?: InputMaybe<Quizzes_On_Conflict>
+}
+
+/** aggregate avg on columns */
+export type Quizzes_Avg_Fields = {
+  __typename?: 'quizzes_avg_fields'
+  total_difficulty?: Maybe<Scalars['Float']>
+}
+
+/** order by avg() on columns of table "quizzes" */
+export type Quizzes_Avg_Order_By = {
+  total_difficulty?: InputMaybe<Order_By>
 }
 
 /** Boolean expression to filter rows from the table "quizzes". All fields are combined with a logical 'AND'. */
@@ -1234,6 +1285,8 @@ export type Quizzes_Bool_Exp = {
   id?: InputMaybe<String_Comparison_Exp>
   questions?: InputMaybe<Quizzes_Questions_Bool_Exp>
   started_at?: InputMaybe<Timestamptz_Comparison_Exp>
+  thumbnail?: InputMaybe<String_Comparison_Exp>
+  total_difficulty?: InputMaybe<Numeric_Comparison_Exp>
   user?: InputMaybe<Users_Bool_Exp>
   user_id?: InputMaybe<String_Comparison_Exp>
 }
@@ -1244,12 +1297,19 @@ export enum Quizzes_Constraint {
   QuizzesPkey = 'quizzes_pkey'
 }
 
+/** input type for incrementing numeric columns in table "quizzes" */
+export type Quizzes_Inc_Input = {
+  total_difficulty?: InputMaybe<Scalars['numeric']>
+}
+
 /** input type for inserting data into table "quizzes" */
 export type Quizzes_Insert_Input = {
   completed_at?: InputMaybe<Scalars['timestamptz']>
   id?: InputMaybe<Scalars['String']>
   questions?: InputMaybe<Quizzes_Questions_Arr_Rel_Insert_Input>
   started_at?: InputMaybe<Scalars['timestamptz']>
+  thumbnail?: InputMaybe<Scalars['String']>
+  total_difficulty?: InputMaybe<Scalars['numeric']>
   user?: InputMaybe<Users_Obj_Rel_Insert_Input>
   user_id?: InputMaybe<Scalars['String']>
 }
@@ -1260,6 +1320,8 @@ export type Quizzes_Max_Fields = {
   completed_at?: Maybe<Scalars['timestamptz']>
   id?: Maybe<Scalars['String']>
   started_at?: Maybe<Scalars['timestamptz']>
+  thumbnail?: Maybe<Scalars['String']>
+  total_difficulty?: Maybe<Scalars['numeric']>
   user_id?: Maybe<Scalars['String']>
 }
 
@@ -1268,6 +1330,8 @@ export type Quizzes_Max_Order_By = {
   completed_at?: InputMaybe<Order_By>
   id?: InputMaybe<Order_By>
   started_at?: InputMaybe<Order_By>
+  thumbnail?: InputMaybe<Order_By>
+  total_difficulty?: InputMaybe<Order_By>
   user_id?: InputMaybe<Order_By>
 }
 
@@ -1277,6 +1341,8 @@ export type Quizzes_Min_Fields = {
   completed_at?: Maybe<Scalars['timestamptz']>
   id?: Maybe<Scalars['String']>
   started_at?: Maybe<Scalars['timestamptz']>
+  thumbnail?: Maybe<Scalars['String']>
+  total_difficulty?: Maybe<Scalars['numeric']>
   user_id?: Maybe<Scalars['String']>
 }
 
@@ -1285,6 +1351,8 @@ export type Quizzes_Min_Order_By = {
   completed_at?: InputMaybe<Order_By>
   id?: InputMaybe<Order_By>
   started_at?: InputMaybe<Order_By>
+  thumbnail?: InputMaybe<Order_By>
+  total_difficulty?: InputMaybe<Order_By>
   user_id?: InputMaybe<Order_By>
 }
 
@@ -1317,6 +1385,8 @@ export type Quizzes_Order_By = {
   id?: InputMaybe<Order_By>
   questions_aggregate?: InputMaybe<Quizzes_Questions_Aggregate_Order_By>
   started_at?: InputMaybe<Order_By>
+  thumbnail?: InputMaybe<Order_By>
+  total_difficulty?: InputMaybe<Order_By>
   user?: InputMaybe<Users_Order_By>
   user_id?: InputMaybe<Order_By>
 }
@@ -1814,6 +1884,10 @@ export enum Quizzes_Select_Column {
   /** column name */
   StartedAt = 'started_at',
   /** column name */
+  Thumbnail = 'thumbnail',
+  /** column name */
+  TotalDifficulty = 'total_difficulty',
+  /** column name */
   UserId = 'user_id'
 }
 
@@ -1822,7 +1896,42 @@ export type Quizzes_Set_Input = {
   completed_at?: InputMaybe<Scalars['timestamptz']>
   id?: InputMaybe<Scalars['String']>
   started_at?: InputMaybe<Scalars['timestamptz']>
+  thumbnail?: InputMaybe<Scalars['String']>
+  total_difficulty?: InputMaybe<Scalars['numeric']>
   user_id?: InputMaybe<Scalars['String']>
+}
+
+/** aggregate stddev on columns */
+export type Quizzes_Stddev_Fields = {
+  __typename?: 'quizzes_stddev_fields'
+  total_difficulty?: Maybe<Scalars['Float']>
+}
+
+/** order by stddev() on columns of table "quizzes" */
+export type Quizzes_Stddev_Order_By = {
+  total_difficulty?: InputMaybe<Order_By>
+}
+
+/** aggregate stddev_pop on columns */
+export type Quizzes_Stddev_Pop_Fields = {
+  __typename?: 'quizzes_stddev_pop_fields'
+  total_difficulty?: Maybe<Scalars['Float']>
+}
+
+/** order by stddev_pop() on columns of table "quizzes" */
+export type Quizzes_Stddev_Pop_Order_By = {
+  total_difficulty?: InputMaybe<Order_By>
+}
+
+/** aggregate stddev_samp on columns */
+export type Quizzes_Stddev_Samp_Fields = {
+  __typename?: 'quizzes_stddev_samp_fields'
+  total_difficulty?: Maybe<Scalars['Float']>
+}
+
+/** order by stddev_samp() on columns of table "quizzes" */
+export type Quizzes_Stddev_Samp_Order_By = {
+  total_difficulty?: InputMaybe<Order_By>
 }
 
 /** Streaming cursor of the table "quizzes" */
@@ -1838,7 +1947,20 @@ export type Quizzes_Stream_Cursor_Value_Input = {
   completed_at?: InputMaybe<Scalars['timestamptz']>
   id?: InputMaybe<Scalars['String']>
   started_at?: InputMaybe<Scalars['timestamptz']>
+  thumbnail?: InputMaybe<Scalars['String']>
+  total_difficulty?: InputMaybe<Scalars['numeric']>
   user_id?: InputMaybe<Scalars['String']>
+}
+
+/** aggregate sum on columns */
+export type Quizzes_Sum_Fields = {
+  __typename?: 'quizzes_sum_fields'
+  total_difficulty?: Maybe<Scalars['numeric']>
+}
+
+/** order by sum() on columns of table "quizzes" */
+export type Quizzes_Sum_Order_By = {
+  total_difficulty?: InputMaybe<Order_By>
 }
 
 /** update columns of table "quizzes" */
@@ -1850,13 +1972,52 @@ export enum Quizzes_Update_Column {
   /** column name */
   StartedAt = 'started_at',
   /** column name */
+  Thumbnail = 'thumbnail',
+  /** column name */
+  TotalDifficulty = 'total_difficulty',
+  /** column name */
   UserId = 'user_id'
 }
 
 export type Quizzes_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Quizzes_Inc_Input>
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Quizzes_Set_Input>
   where: Quizzes_Bool_Exp
+}
+
+/** aggregate var_pop on columns */
+export type Quizzes_Var_Pop_Fields = {
+  __typename?: 'quizzes_var_pop_fields'
+  total_difficulty?: Maybe<Scalars['Float']>
+}
+
+/** order by var_pop() on columns of table "quizzes" */
+export type Quizzes_Var_Pop_Order_By = {
+  total_difficulty?: InputMaybe<Order_By>
+}
+
+/** aggregate var_samp on columns */
+export type Quizzes_Var_Samp_Fields = {
+  __typename?: 'quizzes_var_samp_fields'
+  total_difficulty?: Maybe<Scalars['Float']>
+}
+
+/** order by var_samp() on columns of table "quizzes" */
+export type Quizzes_Var_Samp_Order_By = {
+  total_difficulty?: InputMaybe<Order_By>
+}
+
+/** aggregate variance on columns */
+export type Quizzes_Variance_Fields = {
+  __typename?: 'quizzes_variance_fields'
+  total_difficulty?: Maybe<Scalars['Float']>
+}
+
+/** order by variance() on columns of table "quizzes" */
+export type Quizzes_Variance_Order_By = {
+  total_difficulty?: InputMaybe<Order_By>
 }
 
 export type Subscription_Root = {
